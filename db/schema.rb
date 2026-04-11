@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_11_114154) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_11_114219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_11_114154) do
     t.string "url"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_links_on_user_id"
+  end
+
+  create_table "links_tags", id: false, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "link_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["link_id"], name: "index_links_tags_on_link_id"
+    t.index ["tag_id"], name: "index_links_tags_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -48,5 +57,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_11_114154) do
   end
 
   add_foreign_key "links", "users"
+  add_foreign_key "links_tags", "links"
+  add_foreign_key "links_tags", "tags"
   add_foreign_key "tags", "users"
 end
