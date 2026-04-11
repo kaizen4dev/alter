@@ -52,6 +52,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "letter_opener", "~> 1.10"
 end
 
 group :development do
