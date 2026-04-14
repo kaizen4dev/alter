@@ -1,0 +1,31 @@
+<nav class="navbar has-shadow" data-controller="navbar">
+  <div class="navbar-brand">
+    <%= link_to "Linki", root_path, class: "navbar-item is-size-4" %>
+
+    <a class="navbar-burger" data-navbar-target="burger" data-action="navbar#toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" data-navbar-target="menu">
+    <div class="navbar-start">
+      <% if signed_in? %>
+        <%= link_to "Add Link", "", class: "navbar-item is-tab" %>
+      <% end %>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item buttons">
+        <% if signed_in? %>
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button navbar-item" %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, class: "button" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "button is-primary is-dark is-outlined is-inverted" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>
