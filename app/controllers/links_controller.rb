@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   def index
-    @links = Link.includes(:tags)
+    @links = current_user.links.includes(:tags)
 
     unless params[:tags].nil?
       requiredTags = params[:tags].split
