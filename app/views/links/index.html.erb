@@ -1,0 +1,23 @@
+<div class="container p-4">
+  <div class="section">
+    <%= form_tag :links, method: :get, class: "field is-grouped" do %>
+      <%= text_field_tag :tags, nil,  placeholder: "Tags without \"#\", separated with spaces", class: "input is-expanded" %>
+      <%= submit_tag "Search", class: "button is-info" %>
+    <% end %>
+  </div>
+
+  <div class="section">
+    <% @links.each do |link| %>
+      <div class="card">
+        <div class="card-header">
+          <%= link_to link.url, link.url, class: "card-header-title box" %>
+        </div>
+        <div class="card-content has-text-medium is-size-5 is-info">
+          <% link.tags.each do |t|%>
+            <%= tag.span "#" + t.name %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
