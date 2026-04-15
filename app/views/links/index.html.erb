@@ -14,13 +14,13 @@
         </div>
         <div class="card-content has-text-medium is-size-5 is-info p-3">
           <% link.tags.each do |t|%>
-            <%= tag.span "#" + t.name %>
+            <%= tag.span "#" + t.name, class: "tag is-medium" %>
           <% end %>
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer has-text-info">
           <%= button_to "Delete", link_path(link), method: :delete, class: "card-footer-item", data: {turbo_confirm: "Delete link?"} %>
-          <%= link_to "Edit", edit_link_path(link), class: "card-footer-item has-text" %>
+          <%= link_to "Edit", edit_link_path(link), class: "card-footer-item has-text-inherit" %>
           <%= button_tag "Copy", class: "card-footer-item" %>
         </div>
       </div>
