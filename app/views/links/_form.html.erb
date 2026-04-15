@@ -1,0 +1,12 @@
+<%= form_with model: @link, class: "box" do |f| %>
+  <%= tag.div class: "field" do %>
+    <%= f.label "url", class: "label is-medium" %>
+    <%= f.text_field "url", placeholder: "https://example.com", class: "input is-medium" %>
+  <% end %>
+  <%= tag.div class: "field" do %>
+    <%= f.label "tags", class: "label is-medium" %>
+    <%= f.text_field "tags", value: @link.tags.pluck(:name).join, placeholder: "example interesting", class: "input is-medium" %>
+  <% end %>
+
+  <%= f.submit class: "button"%>
+<% end %>

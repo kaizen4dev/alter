@@ -13,7 +13,7 @@
   <div class="navbar-menu" data-navbar-target="menu">
     <div class="navbar-start">
       <% if signed_in? %>
-        <%= link_to "Add Link", "", class: "navbar-item is-tab" %>
+        <%= link_to "Add Link", new_link_path, class: "navbar-item is-tab" %>
       <% end %>
     </div>
 
