@@ -1,7 +1,7 @@
 <div class="container p-4">
   <div class="section">
     <%= form_tag :links, method: :get, class: "field is-grouped" do %>
-      <%= text_field_tag :tags, nil,  placeholder: "Tags without \"#\", separated with spaces", class: "input is-expanded" %>
+      <%= text_field_tag :tags, nil,  placeholder: "Tags without \"#\", separated with spaces", value: params[:tags], class: "input is-expanded" %>
       <%= submit_tag "Search", class: "button is-info" %>
     <% end %>
   </div>
