@@ -33,6 +33,20 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    @link = Link.find params[:id]
+  end
+
+  def update
+    self.create
+    Link.find(params[:id]).destroy
+  end
+
+  def destroy
+    Link.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
   private
 
   def link_params

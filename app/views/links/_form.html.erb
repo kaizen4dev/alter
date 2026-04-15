@@ -5,7 +5,7 @@
   <% end %>
   <%= tag.div class: "field" do %>
     <%= f.label "tags", class: "label is-medium" %>
-    <%= f.text_field "tags", value: @link.tags.pluck(:name).join, placeholder: "example interesting", class: "input is-medium" %>
+    <%= f.text_field "tags", value: @link.tags.pluck(:name).join(" "), placeholder: "example interesting", class: "input is-medium" %>
   <% end %>
 
   <%= f.submit class: "button"%>
