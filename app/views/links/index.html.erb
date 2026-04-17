@@ -8,7 +8,7 @@
 
   <div class="section">
     <% @links.each do |link| %>
-      <div class="card">
+      <div class="card" data-controller="link" data-link-url-value="<%= link.url %>">
         <div class="card-header">
           <%= link_to link.url, link.url, class: "card-header-title box" %>
         </div>
@@ -21,7 +21,7 @@
         <div class="card-footer has-text-info">
           <%= button_to "Delete", link_path(link), method: :delete, class: "card-footer-item", data: {turbo_confirm: "Delete link?"} %>
           <%= link_to "Edit", edit_link_path(link), class: "card-footer-item has-text-inherit" %>
-          <%= button_tag "Copy", class: "card-footer-item" %>
+          <%= button_tag "Copy", class: "card-footer-item", data: { link_target: "copyBtn", action: "link#copyURL"} %>
         </div>
       </div>
     <% end %>
