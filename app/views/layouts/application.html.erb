@@ -25,6 +25,10 @@
 
   <body>
     <%= render "layouts/navbar" %>
+      <section id="devise-notice" class="container is-max-tablet p-4">
+        <%= tag.p notice, class: "notification is-success" if notice %>
+        <%= tag.p alert, class: "notification is-danger" if alert %>
+      </section>
 
     <%= yield %>
   </body>
