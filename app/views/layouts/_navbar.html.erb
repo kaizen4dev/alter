@@ -20,6 +20,7 @@
     <div class="navbar-end">
       <div class="navbar-item buttons">
         <% if signed_in? %>
+          <%= link_to "Account", edit_user_registration_path, class: "navbar-item" %>
           <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button navbar-item" %>
         <% else %>
           <%= link_to "Sign in", new_user_session_path, class: "button" %>
