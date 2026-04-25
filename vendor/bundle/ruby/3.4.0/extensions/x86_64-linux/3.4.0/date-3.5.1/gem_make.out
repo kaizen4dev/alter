@@ -1,0 +1,24 @@
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/date-3.5.1/ext/date
+/nix/store/lmwsrlh42jk9578yfhmw2kpvqvz2r5m6-ruby-3.4.8/bin/ruby extconf.rb
+checking for rb_category_warn()... yes
+checking for timezone in time.h with -Werror... yes
+checking for altzone in time.h with -Werror... no
+creating Makefile
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-j8wy13 sitelibdir\=./.gem.20260426-836436-j8wy13 clean
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-j8wy13 sitelibdir\=./.gem.20260426-836436-j8wy13
+compiling date_core.c
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+linking shared-object date_core.so
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-j8wy13 sitelibdir\=./.gem.20260426-836436-j8wy13 install
+install -c -p -m 755 date_core.so ./.gem.20260426-836436-j8wy13
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/date-3.5.1/ext/date
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-j8wy13 sitelibdir\=./.gem.20260426-836436-j8wy13 clean

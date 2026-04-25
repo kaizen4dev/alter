@@ -1,0 +1,19 @@
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/erb-6.0.2/ext/erb/escape
+/nix/store/lmwsrlh42jk9578yfhmw2kpvqvz2r5m6-ruby-3.4.8/bin/ruby extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-1okt0q sitelibdir\=./.gem.20260426-836436-1okt0q clean
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-1okt0q sitelibdir\=./.gem.20260426-836436-1okt0q
+compiling escape.c
+linking shared-object erb/escape.so
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-1okt0q sitelibdir\=./.gem.20260426-836436-1okt0q install
+install -c -p -m 755 escape.so ./.gem.20260426-836436-1okt0q/erb
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/erb-6.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-1okt0q sitelibdir\=./.gem.20260426-836436-1okt0q clean

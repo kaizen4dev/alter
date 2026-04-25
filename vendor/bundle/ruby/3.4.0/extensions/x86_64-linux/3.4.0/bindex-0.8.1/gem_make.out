@@ -1,0 +1,18 @@
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+/nix/store/lmwsrlh42jk9578yfhmw2kpvqvz2r5m6-ruby-3.4.8/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-80fjdb sitelibdir\=./.gem.20260426-836436-80fjdb clean
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-80fjdb sitelibdir\=./.gem.20260426-836436-80fjdb
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.so
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-80fjdb sitelibdir\=./.gem.20260426-836436-80fjdb install
+install -c -p -m 755 cruby.so ./.gem.20260426-836436-80fjdb/skiptrace/internal
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260426-836436-80fjdb sitelibdir\=./.gem.20260426-836436-80fjdb clean
