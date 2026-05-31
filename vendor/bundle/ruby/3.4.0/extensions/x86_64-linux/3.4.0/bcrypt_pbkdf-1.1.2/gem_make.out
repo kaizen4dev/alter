@@ -1,0 +1,22 @@
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+/nix/store/lmwsrlh42jk9578yfhmw2kpvqvz2r5m6-ruby-3.4.8/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-61ldp0 sitelibdir\=./.gem.20260531-104481-61ldp0 clean
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-61ldp0 sitelibdir\=./.gem.20260531-104481-61ldp0
+compiling bcrypt_pbkdf.c
+compiling bcrypt_pbkdf_ext.c
+compiling blowfish.c
+compiling explicit_bzero.c
+compiling hash_sha512.c
+linking shared-object bcrypt_pbkdf_ext.so
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-61ldp0 sitelibdir\=./.gem.20260531-104481-61ldp0 install
+install -c -p -m 755 bcrypt_pbkdf_ext.so ./.gem.20260531-104481-61ldp0
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/bcrypt_pbkdf-1.1.2/ext/mri
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-61ldp0 sitelibdir\=./.gem.20260531-104481-61ldp0 clean

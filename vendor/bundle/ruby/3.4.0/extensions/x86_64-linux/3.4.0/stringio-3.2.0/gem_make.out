@@ -1,0 +1,19 @@
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/stringio-3.2.0/ext/stringio
+/nix/store/lmwsrlh42jk9578yfhmw2kpvqvz2r5m6-ruby-3.4.8/bin/ruby extconf.rb
+checking for rb_io_mode_t in ruby/io.h... no
+creating Makefile
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-yrw818 sitelibdir\=./.gem.20260531-104481-yrw818 clean
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-yrw818 sitelibdir\=./.gem.20260531-104481-yrw818
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-yrw818 sitelibdir\=./.gem.20260531-104481-yrw818 install
+install -c -p -m 755 stringio.so ./.gem.20260531-104481-yrw818
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/stringio-3.2.0/ext/stringio
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-yrw818 sitelibdir\=./.gem.20260531-104481-yrw818 clean

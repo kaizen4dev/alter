@@ -47,4 +47,3 @@ devenv.local.yaml
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
-/vendor

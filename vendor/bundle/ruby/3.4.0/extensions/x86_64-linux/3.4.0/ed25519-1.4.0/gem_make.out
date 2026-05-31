@@ -1,0 +1,31 @@
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+/nix/store/lmwsrlh42jk9578yfhmw2kpvqvz2r5m6-ruby-3.4.8/bin/ruby extconf.rb
+checking for whether -Wall is accepted as CFLAGS... yes
+checking for whether -O3 is accepted as CFLAGS... yes
+checking for whether -pedantic is accepted as CFLAGS... yes
+checking for whether -std=c99 is accepted as CFLAGS... no
+creating Makefile
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-b2nh0p sitelibdir\=./.gem.20260531-104481-b2nh0p clean
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-b2nh0p sitelibdir\=./.gem.20260531-104481-b2nh0p
+compiling ed25519_ref10.c
+compiling fe.c
+compiling ge.c
+compiling keypair.c
+compiling open.c
+compiling sc_muladd.c
+compiling sc_reduce.c
+compiling sha512.c
+compiling sign.c
+compiling verify.c
+linking shared-object ed25519_ref10.so
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-b2nh0p sitelibdir\=./.gem.20260531-104481-b2nh0p install
+install -c -p -m 755 ed25519_ref10.so ./.gem.20260531-104481-b2nh0p
+
+current directory: /home/k/repos/linki/vendor/bundle/ruby/3.4.0/gems/ed25519-1.4.0/ext/ed25519_ref10
+make DESTDIR\= sitearchdir\=./.gem.20260531-104481-b2nh0p sitelibdir\=./.gem.20260531-104481-b2nh0p clean
