@@ -1,5 +1,7 @@
 require "active_support/core_ext/integer/time"
 
+Rails.application.default_url_options[:host] = ENV["HOST"]
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -70,8 +72,9 @@ Rails.application.configure do
     user_name: ENV["SMTP_USERNAME"],
     password: ENV["SMTP_PASSWORD"],
     address: ENV["SMTP_ADDRESS"],
-    port: 587,
-    authentication: :plain
+    port: 465,
+    authentication: :plain,
+    ssl: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
