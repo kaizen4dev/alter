@@ -1,31 +1,44 @@
-<div class="container p-4">
-  <div class="section">
-    <%= form_tag :links, method: :get, class: "field is-grouped" do %>
-      <%= text_field_tag :tags, nil,  placeholder: "Tags without \"#\", separated with spaces", value: params[:tags], class: "input is-expanded" %>
-      <%= submit_tag "Search", class: "button is-info" %>
-    <% end %>
-  </div>
+<%= turbo_frame_tag "content" do %>
+  <div class="container p-4 my-4">
+    <div class="tabs is-centered">
+      <ul>
+        <li class="is-active">
+          <%= link_to "Search", links_path %>
+        </li>
+        <li>
+          <%= link_to "Add New", new_link_path %>
+        </li>
+      </ul>
+    </div>
 
-  <div class="section">
-    <% @links.each do |link| %>
-      <%= turbo_frame_tag "link-#{link.id}", class: "is-block mb-5" do %>
-        <div class="card" data-controller="link" data-link-url-value="<%= link.url %>">
-          <div class="card-header">
-            <%= link_to link.url, link.url, class: "card-header-title box" %>
-          </div>
-          <div class="card-content has-text-medium is-size-5 is-info p-3">
-            <% link.tags.each do |t|%>
-              <%= tag.span "#" + t.name, class: "tag is-medium" %>
-            <% end %>
-          </div>
-
-          <div class="card-footer has-text-info">
-            <%= button_to "Delete", link_path(link), method: :delete, class: "card-footer-item", data: {turbo_confirm: "Delete link?"} %>
-            <%= link_to "Edit", edit_link_path(link), class: "card-footer-item has-text-inherit" %>
-            <%= button_tag "Copy", class: "card-footer-item", data: { link_target: "copyBtn", action: "link#copyURL"} %>
-          </div>
-        </div>
+    <div class="section">
+      <%= form_tag :links, method: :get, class: "field is-grouped" do %>
+        <%= text_field_tag :tags, nil,  placeholder: "Tags without \"#\", separated with spaces", value: params[:tags], class: "input is-expanded" %>
+        <%= submit_tag "Search", class: "button is-info" %>
       <% end %>
-    <% end %>
+    </div>
+
+    <div class="section">
+      <% @links.each do |link| %>
+        <%= turbo_frame_tag "link-#{link.id}", class: "is-block mb-5" do %>
+          <div class="card" data-controller="link" data-link-url-value="<%= link.url %>">
+            <div class="card-header">
+              <%= link_to link.url, link.url, class: "card-header-title box" %>
+            </div>
+            <div class="card-content has-text-medium is-size-5 is-info p-3">
+              <% link.tags.each do |t|%>
+                <%= tag.span "#" + t.name, class: "tag is-medium" %>
+              <% end %>
+            </div>
+
+            <div class="card-footer has-text-info">
+              <%= button_to "Delete", link_path(link), method: :delete, class: "card-footer-item", data: {turbo_confirm: "Delete link?"} %>
+              <%= link_to "Edit", edit_link_path(link), class: "card-footer-item has-text-inherit" %>
+              <%= button_tag "Copy", class: "card-footer-item", data: { link_target: "copyBtn", action: "link#copyURL"} %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

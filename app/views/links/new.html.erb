@@ -1,4 +1,17 @@
-<%= tag.div class: "container p-4 my-4 is-max-tablet" do %>
-  <%= tag.h1 "Add Link", class: "title" %>
-  <%= render "form" %>
+<%= turbo_frame_tag "content" do %>
+  <%= tag.div class: "container p-4 my-4 is-max-tablet" do %>
+    <div class="tabs is-centered">
+      <ul>
+        <li>
+          <%= link_to "Search", links_path %>
+        </li>
+        <li class="is-active">
+          <%= link_to "Add New", new_link_path %>
+        </li>
+      </ul>
+    </div>
+
+    <%= tag.h1 "Add Link", class: "title" %>
+    <%= render "form" %>
+  <% end %>
 <% end %>
