@@ -11,11 +11,11 @@
   </div>
 
   <div class="navbar-menu" data-navbar-target="menu">
-    <div class="navbar-start">
-      <% if signed_in? %>
-        <%= link_to "Add Link", new_link_path, class: "navbar-item is-tab" %>
-      <% end %>
-    </div>
+    <% if signed_in? %>
+      <div class="navbar-start">
+          <%= link_to "Links", links_path, class: "navbar-item is-normal" %>
+      </div>
+    <% end %>
 
     <div class="navbar-end">
       <div class="navbar-item buttons">
