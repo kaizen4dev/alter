@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "book-#{book.id}" do %>
+  <div class="card cell p-4 is-flex">
+    <%= image_tag book.picture_url, class: "card-image image", style: "height: 200px !important;" unless book.picture_url.blank? %>
+
+    <div class="card-content p-0 ml-4 is-flex is-flex-direction-column is-justify-content-space-between">
+      <div>
+        <%= tag.h3 link_to(("N/A" if book.title.blank?) || book.title, edit_book_path(id: book.id), class:"has-text-current", data: {turbo_frame: "_top"}), class: "title is-5" %>
+        <%= tag.p "Author: " + ("N/A" if book.author.blank? || book.author) %>
+        <%= tag.p "Read: " + (book.read_chapters || 0).to_s + (" out of " + book.all_chapters.to_s if book.all_chapters).to_s %>
+      </div>
+
+      <ul class="is-flex is-flex-wrap-wrap">
+        <% ["-10", "-5", "-1", "+1", "+5", "+10"].each do |number| %>
+          <%= button_to number, change_book_chapters_path(id: book.id, number: number), method: :patch, class: "button is-small m-1"%>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

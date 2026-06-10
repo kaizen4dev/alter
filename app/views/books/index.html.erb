@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "content", data: {turbo_action: :advance} do %>
+  <div class="container p-4 my-4">
+    <div class="is-flex is-justify-content-space-between">
+      <%= tag.h1 @category.capitalize, class: "title is-3"%>
+      <%= link_to "Add", new_book_path(category: @category), class: "button my-auto" %>
+    </div>
+    <div class="tabs is-centered is-boxed">
+      <ul>
+        <% Book.statuses.each_key do |status| %>
+          <li class="<%="is-active" if status == @status %>">
+            <%= link_to status.capitalize, books_path(status: status, category: @category) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="grid is-col-min-12">
+      <% @books.each do |book| %>
+        <%= render "card", book: book %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

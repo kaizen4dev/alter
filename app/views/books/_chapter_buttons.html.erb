@@ -1,0 +1,5 @@
+<ul class="<%= style %>">
+  <% ["-10", "-5", "-1", "+1", "+5", "+10"].each do |number| %>
+    <%= button_to number, change_book_chapters_path(id: book.id, number: number), method: :patch, class: "button is-small mr-1"%>
+  <% end %>
+</ul>

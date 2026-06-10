@@ -1,0 +1,37 @@
+<%= form_with model: @book do |book| %>
+  <%= tag.div class: :field do %>
+    <%= book.label :title, class: :label %>
+    <%= book.text_field :title, class: :input %>
+  <% end %>
+
+  <%= tag.div class: "select field" do %>
+    <%= book.select :category, Book.categories.keys %>
+  <% end %>
+
+  <%= tag.div class: "select field" do %>
+    <%= book.select :statuses, Book.statuses.keys %>
+  <% end %>
+
+  <%= tag.div class: :field do %>
+    <%= book.label :author, class: :label %>
+    <%= book.text_field :author, class: :input %>
+  <% end %>
+
+  <%= tag.div class: :field do %>
+    <%= book.label :picture_url, class: :label %>
+    <%= book.text_field :picture_url, class: :input %>
+  <% end %>
+
+  <%= tag.div class: :field do %>
+    <%= book.label :read_chapters, "Number of read chapters", class: :label %>
+    <%= book.number_field :read_chapters, class: :input %>
+  <% end %>
+
+  <%= tag.div class: :field do %>
+    <%= book.label :all_chapters, "Number of all chapters", class: :label %>
+    <%= book.number_field :all_chapters, class: :input %>
+  <% end %>
+
+  <%= book.submit class: "button" %>
+  <%= link_to "Cancel", books_path(category: @book.category), class: "button" %>
+<% end %>
