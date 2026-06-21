@@ -15,10 +15,10 @@
       <div class="navbar-start">
         <%= link_to "Links", links_path, class: "navbar-item is-normal" %>
           <div class="navbar-item has-dropdown is-hoverable">
-            <%= link_to "Books", books_path, class: "navbar-link is-normal" %>
+            <%= tag.a "Books", class: "navbar-link is-arrowless" %>
             <div class="navbar-dropdown">
               <% Book.categories.each_key do |category| %>
-                <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"is-selected" if @category == category}" %>
+                <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"is-selected has-text-white" if @category == category}" %>
               <% end %>
             </div>
           </div>
