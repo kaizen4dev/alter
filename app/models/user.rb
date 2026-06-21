@@ -9,6 +9,4 @@ class User < ApplicationRecord
   has_many :tags
 
   has_many :books
-  has_many :book_authors
-  has_many :book_categories
 end
