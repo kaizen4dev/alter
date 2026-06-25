@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_06_184607) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_21_204259) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,32 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_06_184607) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "finance_accounts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "currency"
+    t.integer "group", default: 0
+    t.string "name"
+    t.float "sum"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_finance_accounts_on_user_id"
+  end
+
+  create_table "finance_transfers", force: :cascade do |t|
+    t.float "amount"
+    t.datetime "created_at", null: false
+    t.string "currency"
+    t.bigint "destination_id"
+    t.float "fee"
+    t.string "note"
+    t.bigint "source_id"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["destination_id"], name: "index_finance_transfers_on_destination_id"
+    t.index ["source_id"], name: "index_finance_transfers_on_source_id"
+    t.index ["user_id"], name: "index_finance_transfers_on_user_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -71,6 +97,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_06_184607) do
   end
 
   add_foreign_key "books", "users"
+  add_foreign_key "finance_accounts", "users"
+  add_foreign_key "finance_transfers", "finance_accounts", column: "destination_id"
+  add_foreign_key "finance_transfers", "finance_accounts", column: "source_id"
+  add_foreign_key "finance_transfers", "users"
   add_foreign_key "links", "users"
   add_foreign_key "links_tags", "links"
   add_foreign_key "links_tags", "tags"

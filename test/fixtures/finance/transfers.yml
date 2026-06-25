@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sum: 1.5
+  fee: 1.5
+  currency: MyString
+  to: one
+  from: one
+  note: MyString
+  user: one
+
+two:
+  sum: 1.5
+  fee: 1.5
+  currency: MyString
+  to: two
+  from: two
+  note: MyString
+  user: two

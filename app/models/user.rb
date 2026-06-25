@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :tags
 
   has_many :books
+
+  has_many :finance_accounts, class_name: "Finance::Account"
+  has_many :finance_transfers, class_name: "Finance::Transfer"
 end
