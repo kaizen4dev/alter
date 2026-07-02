@@ -1,0 +1,9 @@
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+/nix/store/6jz2pgmsh06z9a83qi33f6lp9w2q6mzm-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260628-10065-33tlik sitelibdir\=./.gem.20260628-10065-33tlik clean
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20260628-10065-33tlik sitelibdir\=./.gem.20260628-10065-33tlik
+make failedNo such file or directory - make

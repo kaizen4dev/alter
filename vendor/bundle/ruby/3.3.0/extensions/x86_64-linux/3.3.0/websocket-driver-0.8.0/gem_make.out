@@ -1,0 +1,9 @@
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+/nix/store/6jz2pgmsh06z9a83qi33f6lp9w2q6mzm-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260628-10065-o1m8df sitelibdir\=./.gem.20260628-10065-o1m8df clean
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/websocket-driver-0.8.0/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260628-10065-o1m8df sitelibdir\=./.gem.20260628-10065-o1m8df
+make failedNo such file or directory - make

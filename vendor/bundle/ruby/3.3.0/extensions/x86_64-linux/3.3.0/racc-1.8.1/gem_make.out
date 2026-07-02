@@ -1,0 +1,9 @@
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
+/nix/store/6jz2pgmsh06z9a83qi33f6lp9w2q6mzm-ruby-3.3.10/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260628-10065-ynu0fk sitelibdir\=./.gem.20260628-10065-ynu0fk clean
+current directory: /home/k/repos/alter/vendor/bundle/ruby/3.3.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20260628-10065-ynu0fk sitelibdir\=./.gem.20260628-10065-ynu0fk
+make failedNo such file or directory - make
