@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "content", data: {turbo_action: :advance} do %>
+  <div class="container p-4 my-4">
+    <%= tag.h1 "Accounts", class: "title is-2"%>
+
+    <div class="grid">
+      <%= render "accounts_box", accounts: @expense_accounts, group: :expense %>
+      <%= render "accounts_box", accounts: @saving_accounts, group: :saving %>
+      <%= render "accounts_box", accounts: @lent_accounts, group: :lent %>
+    </div>
+
+    <div class="is-flex is-justify-content-space-between mb-1">
+      <%= tag.h2 "Transfers", class: "title is-2" %>
+      <%= link_to "New", new_finance_transfer_path, class: "button my-auto" %>
+    </div>
+
+    <div class="container">
+      <% @transfers.each do |transfer| %>
+        <%= render "transfer_entry", transfer: transfer %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

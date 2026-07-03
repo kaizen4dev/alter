@@ -4,6 +4,8 @@ class Finance::Transfer < ApplicationRecord
   belongs_to :source, class_name: "Finance::Account", optional: true
   belongs_to :destination, class_name: "Finance::Account", optional: true
 
+  default_scope { order created_at: :desc }
+
   scope :relocations, -> { where.not(source_id: nil).where.not(destination_id: nil) }
   scope :incomes, -> { where(source_id: nil).where.not(destination_id: nil) }
   scope :expenses, -> { where(destination_id: nil).where.not(source_id: nil) }

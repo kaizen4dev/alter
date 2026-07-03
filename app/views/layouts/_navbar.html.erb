@@ -13,15 +13,16 @@
   <div class="navbar-menu" data-navbar-target="menu">
     <% if signed_in? %>
       <div class="navbar-start">
-        <%= link_to "Links", links_path, class: "navbar-item is-normal" %>
-          <div class="navbar-item has-dropdown is-hoverable">
-            <%= tag.a "Books", class: "navbar-link is-arrowless" %>
-            <div class="navbar-dropdown">
-              <% Book.categories.each_key do |category| %>
-                <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"is-selected has-text-white" if @category == category}" %>
-              <% end %>
-            </div>
+        <%= link_to "Links", links_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == links_path || request.path == root_path}" %>
+        <div class="navbar-item has-dropdown is-hoverable is-boxed">
+          <%= tag.a "│Books", class: "navbar-link is-arrowless is-boxed #{"is-selected has-text-white" if request.path == books_path}" %>
+          <div class="navbar-dropdown">
+            <% Book.categories.each_key do |category| %>
+              <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"is-selected has-text-white" if @category == category}" %>
+            <% end %>
           </div>
+        </div>
+        <%= link_to "Finance", finance_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == finance_path}" %>
       </div>
     <% end %>
 

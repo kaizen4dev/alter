@@ -1,0 +1,17 @@
+<%
+  title = "#{transfer.source.name unless transfer.source.nil?} -> #{transfer.destination.name unless transfer.destination.nil?}"
+  color = case transfer.category
+          when :incomes then "has-text-success-invert has-background-success"
+          when :expenses then "has-text-danger-invert has-background-danger"
+          when :relocations then "has-text-info-invert has-background-info"
+          end
+%>
+
+<div class="block">
+  <%= tag.p title, class: "title is-6 m-0"%>
+  <%= tag.p class: "box p-2 is-flex is-align-items-center m-0 " + color do %>
+    <%= tag.span transfer.amount.to_s + " " + transfer.currency, class: "p-2" %>
+    <%= tag.span transfer.note, class: "box m-0 p-2 ml-4 is-flex-grow-1" %>
+  <% end %>
+  <%= tag.p transfer.created_at, class: "m-0 has-text-right" %>
+</div>
