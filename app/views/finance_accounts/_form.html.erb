@@ -1,0 +1,25 @@
+<%= form_with model: @account do |f| %>
+  <div class="field">
+    <%= f.hidden_field :group %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, class: "label" %>
+    <%= f.text_field :name, class: "input" %>
+  </div>
+
+  <div class="container is-flex">
+    <div class="field">
+      <%= f.label :sum, class: "label" %>
+      <%= f.number_field :sum, class: "input" %>
+    </div>
+
+    <div class="field ml-4 is-flex-grow-1">
+      <%= f.label :currency, class: "label" %>
+      <%= f.text_field :currency, class: "input" %>
+    </div>
+  </div>
+
+  <%= f.submit class: "button" %>
+  <%= link_to "Cancel", finance_path, class: "button" %>
+<% end %>

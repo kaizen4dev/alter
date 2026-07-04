@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   resources :links, except: [ :show ]
   resources :books
-  resource :finance, controller: "finance_accounts" do
+  patch :change_book_chapters, to: "books#change_chapters"
+
+  resource :finance, only: [:show], controller: "finance_accounts" do
+    resources :accounts, except: [:index, :show], controller: "finance_accounts"
     resources :transfers, controller: "finance_transfres"
   end
-  patch :change_book_chapters, to: "books#change_chapters"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
