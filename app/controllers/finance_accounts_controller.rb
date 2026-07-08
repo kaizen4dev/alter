@@ -23,6 +23,6 @@ class FinanceAccountsController < ApplicationController
   private
 
   def account_params
-    params.expect finance_account: [:name, :sum, :currency]
+    params.expect finance_account: [ :name, :sum, :currency, :group ]
   end
 end
