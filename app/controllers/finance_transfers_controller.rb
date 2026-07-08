@@ -23,6 +23,29 @@ class FinanceTransfersController < ApplicationController
     end
   end
 
+  def edit
+    @transfer = current_user.finance_transfers.find params[:id]
+  end
+
+  def update
+    @transfer = current_user.finance_transfers.find params[:id]
+    @transfer.amount = amount[:sent] || amount[:received]
+    @transfer.fee = amount[:sent] - amount[:received] unless @transfer.source.blank? || @transfer.destination.blank? or @transfer.source.currency != @transfer.destination.currency
+
+    if @transfer.update transfer_params
+      @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.source.blank?
+      @transfer.destination.update sum: @transfer.destination.sum + amount[:received] unless @transfer.destination.blank?
+      redirect_to finance_path
+    else
+      render :edit, status: :unprocessable_content
+    end
+  end
+
+  def destroy
+    current_user.finance_transfers.find(params[:id]).destroy
+    redirect_to finance_path
+  end
+
   private
 
   def transfer_params

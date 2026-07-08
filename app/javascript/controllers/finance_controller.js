@@ -63,4 +63,12 @@ export default class extends Controller {
       Turbo.visit(window.location.href + `/accounts/${accountId}/edit`)
     }
   }
+
+  editTransfer(e) {
+    e.preventDefault()
+
+    if(e.button == 1) {
+      Turbo.visit(window.location.href + `/transfers/${e.params.id}/edit`)
+    }
+  }
 }

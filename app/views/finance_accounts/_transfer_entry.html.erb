@@ -7,7 +7,7 @@
           end
 %>
 
-<div class="block">
+<div class="block" data-action="auxclick->finance#editTransfer" data-finance-id-param="<%=transfer.id%>">
   <%= tag.p title, class: "title is-6 m-0"%>
   <%= tag.p class: "box p-2 is-flex is-align-items-center m-0 " + color do %>
     <%= tag.span transfer.amount.to_s + " " + transfer.currency, class: "p-2" %>
