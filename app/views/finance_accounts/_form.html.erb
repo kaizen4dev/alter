@@ -1,6 +1,6 @@
 <%= form_with model: @account do |f| %>
   <div class="field">
-    <%= f.hidden_field :group, value: params[:group] %>
+    <%= f.hidden_field :group, value: (params[:group] || @account.group ) %>
   </div>
 
   <div class="field">

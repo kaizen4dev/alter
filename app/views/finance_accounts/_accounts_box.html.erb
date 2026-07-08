@@ -8,8 +8,8 @@
     <% accounts.each do |account| %>
       <%= tag.li account.name + " – " + account.sum.to_s + " " + account.currency,
         data: {
-          action: "click->finance#toggleSourceAccount contextmenu->finance#toggleDestinationAccount"
-        }, 
+          action: "click->finance#toggleSourceAccount contextmenu->finance#toggleDestinationAccount auxclick->finance#editAccount"
+        },
         id: "account_#{account.id}",
         class: "is-clickable is-unselectable"
       %>

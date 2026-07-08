@@ -4,9 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = { sourceAccount: String, destinationAccount: String };
 
-  connect() {
-  }
-
   toggleSourceAccount(e) {
     e.preventDefault()
 
@@ -56,5 +53,14 @@ export default class extends Controller {
     let destParam = "&destination=" + this.destinationAccountValue.slice(this.destinationAccountValue.indexOf("_") + 1)
 
     Turbo.visit(button.attributes.href.textContent + srcParam + destParam)
+  }
+
+  editAccount(e) {
+    e.preventDefault()
+
+    if(e.button == 1) {
+      let accountId = e.target.id.slice(e.target.id.indexOf("_") + 1)
+      Turbo.visit(window.location.href + `/accounts/${accountId}/edit`)
+    }
   }
 }

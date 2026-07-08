@@ -20,6 +20,30 @@ class FinanceAccountsController < ApplicationController
     end
   end
 
+  def edit
+    @account = current_user.finance_accounts.find params[:id]
+  end
+
+  def update
+    @account = current_user.finance_accounts.find params[:id]
+
+    if @account.update account_params
+      redirect_to finance_path
+    else
+      render :edit, status: :unprocessable_content
+    end
+  end
+
+  def destroy
+    @account = current_user.finance_accounts.find params[:id]
+
+    if @account.update group: :deleted
+      redirect_to finance_path
+    else
+      render :edit, status: :unprocessable_content
+    end
+  end
+
   private
 
   def account_params
