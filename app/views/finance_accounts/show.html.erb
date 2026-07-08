@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "content", data: {turbo_action: :advance} do %>
-  <div class="container p-4 my-4">
+  <div class="container p-4 my-4" data-controller="finance" data-finance-source-account-value data-finance-destination-account-value >
     <%= tag.h1 "Accounts", class: "title is-2"%>
 
     <div class="grid">
@@ -10,7 +10,7 @@
 
     <div class="is-flex is-justify-content-space-between mb-1">
       <%= tag.h2 "Transfers", class: "title is-2" %>
-      <%= link_to "New", new_finance_transfer_path, class: "button my-auto" %>
+      <%= link_to "New", new_finance_transfer_path, class: "button mt-2 mb-auto", data: {action: "finance#newTransaction", turbo: false} %>
     </div>
 
     <div class="container">

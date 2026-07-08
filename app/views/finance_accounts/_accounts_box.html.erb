@@ -6,7 +6,13 @@
 
   <ul class="pl-4" style="list-style-type: disc;">
     <% accounts.each do |account| %>
-      <%= tag.li account.name + " - " + account.sum.to_s + " " + account.currency %>
+      <%= tag.li account.name + " – " + account.sum.to_s + " " + account.currency,
+        data: {
+          action: "click->finance#toggleSourceAccount contextmenu->finance#toggleDestinationAccount"
+        }, 
+        id: "account_#{account.id}",
+        class: "is-clickable is-unselectable"
+      %>
     <% end %>
   </ul>
 </div>

@@ -1,0 +1,57 @@
+<%= form_with model: @transfer do |f| %>
+  <div class="is-flex-desktop block">
+    <% unless @transfer.source.blank? %>
+      <div class="field is-flex-grow-1 mx-1">
+        <%= f.label :source, class: "label" %>
+        <%= tag.p id: :source, class: "input is-radiusless", disabled: "" do %>
+          <% source_account = @transfer.source %>
+          <%= "#{source_account.group.capitalize}::#{source_account.name} – #{source_account.sum} #{source_account.currency}" %>
+        <% end %>
+        <%= f.hidden_field :source_id %>
+      </div>
+    <% end %>
+
+    <% unless @transfer.destination.blank? %>
+      <div class="field is-flex-grow-1 mx-1">
+        <%= f.label :destination, class: "label" %>
+        <%= tag.p id: :destination, class: "input is-radiusless", disabled: "" do %>
+          <% destination_account = @transfer.destination %>
+          <%= "#{destination_account.group.capitalize}::#{destination_account.name} – #{destination_account.sum} #{destination_account.currency}" %>
+        <% end %>
+        <%= f.hidden_field :destination_id %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="is-flex-desktop block">
+    <% unless @transfer.source.blank? %>
+      <div class="field is-flex-grow-1 mx-1">
+        <%= f.label :sent, class: "label" %>
+        <div class="is-flex">
+          <%= f.text_field :sent, class: "input is-radiusless is-flex-grow-1" %>
+          <%= tag.p @transfer.source.currency, class: "input is-radiusless is-flex-shrink-5", disabled: "" %>
+        </div>
+      </div>
+    <% end %>
+
+    <% unless @transfer.destination.blank? %>
+      <div class="field is-flex-grow-1 mx-1">
+        <%= f.label :received, class: "label" %>
+        <div class="is-flex">
+          <%= f.text_field :received, class: "input is-radiusless is-flex-grow-1" %>
+          <%= tag.p @transfer.destination.currency, class: "input is-radiusless is-flex-shrink-5", disabled: "" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field block mx-1 mb-5">
+    <%= f.label :note, class: "label" %>
+    <%= f.text_field :note, class: "input" %>
+  </div>
+
+  <div class="buttons block mx-1">
+    <%= f.submit class: "button" %>
+    <%= link_to "Cancel", finance_path, class: "button" %>
+  </div>
+<% end %>

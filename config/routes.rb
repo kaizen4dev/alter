@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resource :finance, only: [:show], controller: "finance_accounts" do
     resources :accounts, except: [:index, :show], controller: "finance_accounts"
-    resources :transfers, controller: "finance_transfres"
+    resources :transfers, controller: "finance_transfers"
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
