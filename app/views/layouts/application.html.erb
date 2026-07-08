@@ -25,9 +25,19 @@
 
   <body>
     <%= render "layouts/navbar" %>
-      <section id="devise-notice" class="container is-max-tablet p-4">
-        <%= tag.p notice, class: "notification is-success" if notice %>
-        <%= tag.p alert, class: "notification is-danger" if alert %>
+      <section id="notifications" class="container is-max-tablet p-4 ml-6" data-controller="notifications">
+        <% if notice %>
+          <%= tag.p class: "notification is-info" do %>
+            <%= tag.button "", class: "delete", data: {action: "notifications#delete" } %>
+            <%= notice %>
+          <% end %>
+        <% end %>
+        <% if alert %>
+          <%= tag.p class: "notification is-warning" do %>
+            <%= tag.button "", class: "delete", data: {action: "notifications#delete"} %>
+            <%= alert %>
+          <% end %>
+        <% end %>
       </section>
 
     <%= yield %>
