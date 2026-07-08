@@ -21,7 +21,7 @@ class LinksController < ApplicationController
     append_tags!(link_params[:tags], @link)
 
     if @link.save
-      redirect_to root_path
+      redirect_to links_path
     else
       render :new, status: :unprocessable_content
     end
@@ -41,7 +41,7 @@ class LinksController < ApplicationController
 
   def destroy
     Link.find(params[:id]).destroy
-    redirect_to root_path
+    redirect_to links_path
   end
 
   private
