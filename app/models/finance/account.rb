@@ -4,6 +4,8 @@ class Finance::Account < ApplicationRecord
   has_many :transfers_out, foreign_key: :source_id, class_name: "Finance::Transfer"
   enum :group, [ :expense, :lent, :saving ]
 
+  validates :sum, :name, :currency, presence: true
+
   def transfers
     transfers_in.or(transfers_out).to_a
   end

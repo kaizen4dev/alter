@@ -9,4 +9,20 @@ class FinanceAccountsController < ApplicationController
   def new
     @account = current_user.finance_accounts.new group: params[:group]
   end
+
+  def create
+    @account = current_user.finance_accounts.new account_params
+
+    if @account.save
+      redirect_to finance_path
+    else
+      render :new, status: :unprocessable_content
+    end
+  end
+
+  private
+
+  def account_params
+    params.expect finance_account: [:name, :sum, :currency]
+  end
 end
