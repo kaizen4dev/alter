@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "content" do %>
+  <div class="container p-4 my-4 is-max-tablet">
+    <div class="is-flex is-justify-content-space-between">
+      <%= tag.h1 "Edit token", class: "title is-3" %>
+      <%= button_to "Revoke", @token, method: :delete, class: "button my-2" %>
+    </div>
+    <%= render "form" %>
+  </div>
+<% end %>
+

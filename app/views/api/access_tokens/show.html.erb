@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "content" do %>
+  <div class="container is-max-tablet p-6">
+    <%= tag.h1 "Your token", class: "title" %>
+
+    <div class="block">
+      <%= tag.label "Name:", class: "label" %>
+      <%= tag.p @token.name , class: "input" %>
+    </div>
+
+    <% if @token_value %>
+      <div class="block">
+        <%= tag.label "Value:", class: "label" %>
+        <%= tag.p @token_value , class: "input" %>
+        <%= tag.p "You won't be able to see it again.", class: "has-text-warning" %>
+      </div>
+    <% end %>
+
+    <div class="block buttons">
+      <%= link_to "Edit", edit_api_access_token_path(@token), class: "button" %>
+      <%= button_to "Revoke", @token, method: :delete, class: "button" %>
+      <%= link_to "All tokens", api_access_tokens_path, class: "button" %>
+    </div>
+  </div>
+<% end %>

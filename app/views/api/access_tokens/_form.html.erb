@@ -1,0 +1,9 @@
+<%= form_with model: @token do |token| %>
+  <%= tag.div class: :field do %>
+    <%= token.label :name, class: :label %>
+    <%= token.text_field :name, class: :input %>
+  <% end %>
+
+  <%= token.submit class: "button" %>
+  <%= link_to "Cancel", api_access_tokens_path, class: "button" %>
+<% end %>

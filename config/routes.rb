@@ -6,9 +6,21 @@ Rails.application.routes.draw do
   resources :books
   patch :change_book_chapters, to: "books#change_chapters"
 
-  resource :finance, only: [:show], controller: "finance_accounts" do
-    resources :accounts, except: [:index, :show], controller: "finance_accounts"
-    resources :transfers, controller: "finance_transfers", except: [:index, :show]
+  resource :finance, only: [ :show ], controller: "finance_accounts" do
+    resources :accounts, except: [ :index, :show ], controller: "finance_accounts"
+    resources :transfers, controller: "finance_transfers", except: [ :index, :show ]
+  end
+
+  namespace :api do
+    resources :access_tokens
+    namespace :v1, defaults: { format: "json" } do
+      resources :links
+      resources :books
+      resource :finance, only: [ :show ], controller: "finance_accounts" do
+        resources :accounts, except: [ :index, :show ], controller: "finance_accounts"
+        resources :transfers, controller: "finance_transfers", except: [ :index, :show ]
+      end
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

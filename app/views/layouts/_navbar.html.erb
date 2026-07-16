@@ -29,6 +29,7 @@
       <hr class="p-0 mb-1 m-0">
       <div class="navbar-item buttons p-0">
         <% if signed_in? %>
+          <%= link_to "API", api_access_tokens_path, class: "navbar-item" %>
           <%= link_to "Account", edit_user_registration_path, class: "navbar-item" %>
           <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button navbar-item my-2 ml-2 mr-3" %>
         <% else %>

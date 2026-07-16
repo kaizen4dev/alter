@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "content", data: {turbo_action: :advance} do %>
+  <div class="container p-4 my-4 is-max-desktop">
+    <div class="is-flex is-justify-content-space-between mb-5">
+      <%= tag.h1 "Access Tokens", class: "title is-3"%>
+      <%= link_to "Add", new_api_access_token_path, class: "button my-auto" %>
+    </div>
+    <div>
+      <% @tokens.each do |token| %>
+        <div class="block is-flex">
+          <%= link_to token.name, api_access_token_path(token), class: "input is-radiusless" %>
+          <%= link_to "Edit", edit_api_access_token_path(token), class: "button is-radiusless" %>
+          <%= button_to "Revoke", token, method: :delete, class: "button is-radiusless", data: {turbo_confirm: "Account access via this token will be removed. Confirm that you replaced this token where needed?"} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

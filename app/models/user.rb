@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
+  has_many :access_tokens, class_name: "Api::AccessToken"
+
   has_many :links
   has_many :tags
 
