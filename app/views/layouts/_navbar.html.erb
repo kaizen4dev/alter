@@ -11,29 +11,29 @@
   </div>
 
   <div class="navbar-menu" data-navbar-target="menu">
-    <% if signed_in? %>
-      <div class="navbar-start">
-        <%= link_to "Links", links_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == links_path || request.path == root_path}" %>
-        <div class="navbar-item has-dropdown is-hoverable is-boxed">
-          <%= tag.a "│Books", class: "navbar-link is-arrowless is-boxed #{"is-selected has-text-white" if request.path == books_path}" %>
-          <div class="navbar-dropdown">
-            <% Book.categories.each_key do |category| %>
-              <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"is-selected has-text-white" if @category == category}" %>
-            <% end %>
-          </div>
+    <div class="navbar-start">
+      <%= link_to "Links", links_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == links_path || request.path == root_path}" %>
+      <div class="navbar-item has-dropdown is-hoverable is-boxed">
+        <%= tag.a "Books", class: "navbar-link is-arrowless is-boxed #{"is-selected has-text-white" if request.path == books_path}" %>
+        <div class="navbar-dropdown">
+          <% Book.categories.each_key do |category| %>
+            <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"is-selected has-text-white" if @category == category}" %>
+          <% end %>
         </div>
-        <%= link_to "Finance", finance_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == finance_path}" %>
       </div>
-    <% end %>
+      <%= link_to "Finance", finance_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == finance_path}" %>
+    </div>
 
     <div class="navbar-end">
-      <div class="navbar-item buttons">
+      <hr class="p-0 mt-1 m-0">
+      <hr class="p-0 mb-1 m-0">
+      <div class="navbar-item buttons p-0">
         <% if signed_in? %>
           <%= link_to "Account", edit_user_registration_path, class: "navbar-item" %>
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button navbar-item" %>
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "button navbar-item my-2 ml-2 mr-3" %>
         <% else %>
-          <%= link_to "Sign in", new_user_session_path, class: "button" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "button is-primary is-dark is-outlined is-inverted" %>
+          <%= link_to "Sign in", new_user_session_path, class: "button ml-2 my-2" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "button mr-3 my-2 is-primary" %>
         <% end %>
       </div>
     </div>
