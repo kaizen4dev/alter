@@ -28,11 +28,11 @@ class LinksController < ApplicationController
   end
 
   def edit
-    @link = Link.find params[:id]
+    @link = current_user.links.find params[:id]
   end
 
   def update
-    @link = Link.find params[:id]
+    @link = current_user.links.find params[:id]
     @link.url = link_params[:url]
     @link.tags = append_tags!(link_params[:tags])
 
@@ -40,7 +40,7 @@ class LinksController < ApplicationController
   end
 
   def destroy
-    Link.find(params[:id]).destroy
+    current_user.links.find(params[:id]).destroy
     redirect_to links_path
   end
 
