@@ -33,8 +33,8 @@ class FinanceTransfersController < ApplicationController
     @transfer.fee = amount[:sent] - amount[:received] unless @transfer.source.blank? || @transfer.destination.blank? or @transfer.source.currency != @transfer.destination.currency
 
     if @transfer.update transfer_params
-      @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.source.blank?
-      @transfer.destination.update sum: @transfer.destination.sum + amount[:received] unless @transfer.destination.blank?
+      # @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.source.blank?
+      # @transfer.destination.update sum: @transfer.destination.sum + amount[:received] unless @transfer.destination.blank?
       redirect_to finance_path
     else
       render :edit, status: :unprocessable_content

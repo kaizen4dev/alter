@@ -2,8 +2,19 @@
   <div class="container p-4 my-4 is-max-tablet">
     <div class="is-flex is-justify-content-space-between">
       <%= tag.h1 "Edit #{@transfer.category.to_s.singularize}", class: "title" %>
-      <%= button_to "Delete", @transfer, method: :delete, class: "button" %>
+      <%= button_to "Delete",
+        @transfer,
+        method: :delete,
+        class: "button",
+        data: {
+          turbo_confirm: "Deletion only removes transaction from history. It won't change balances of the accounts, you'll need to do it manually."
+        } %>
     </div>
+    <p class="notification is-warning">
+      At the moment this form doesn't edit balances of the accounts.
+      It represents only visual changes to transfer history. <br><br>
+      You will need to modify balances of your accounts manually.
+    </p>
     <%= render "form" %>
   </div>
 <% end %>
