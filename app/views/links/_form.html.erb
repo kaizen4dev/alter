@@ -1,4 +1,10 @@
 <%= form_with model: @link, class: "box" do |f| %>
+  <%= tag.div do %>
+    <% @link.errors.full_messages.each do |error| %>
+      <%= tag.p error, class: "has-text-danger mb-2" %>
+    <% end %>
+  <% end %>
+
   <%= tag.div class: "field" do %>
     <%= f.label "url", class: "label is-medium" %>
     <%= f.text_field "url", placeholder: "https://example.com", class: "input is-medium" %>
