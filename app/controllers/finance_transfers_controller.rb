@@ -54,6 +54,6 @@ class FinanceTransfersController < ApplicationController
 
   def amount
     p = params.expect finance_transfer: [ :sent, :received ]
-    p.transform_values { |v| v.to_i unless v.blank? }
+    p.transform_values { |v| if v.blank? then 0 else v.to_i end }
   end
 end
