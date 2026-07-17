@@ -33,10 +33,13 @@ class LinksController < ApplicationController
 
   def update
     @link = current_user.links.find params[:id]
-    @link.url = link_params[:url]
     @link.tags = append_tags!(link_params[:tags])
 
-    redirect_to links_path
+    if @link.update url: link_params[:url]
+      redirect_to links_path
+    else
+      render :edit, status: :unprocessable_content
+    end
   end
 
   def destroy
@@ -48,7 +51,7 @@ class LinksController < ApplicationController
 
   def link_params
     p = params.expect link: [ :url, :tags ]
-    p[:url] = "https://" + p[:url] unless p[:url].start_with?("https://", "http://")
+    p[:url] = "https://" + p[:url] unless p[:url].start_with?("https://", "http://") || p[:url].blank?
     p[:tags] = p[:tags].split
     p
   end
