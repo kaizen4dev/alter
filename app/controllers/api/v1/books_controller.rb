@@ -49,6 +49,7 @@ class Api::V1::BooksController < Api::V1::BaseController
 
   def convert(book)
     {
+      id: book.id,
       title: book.title,
       category: book.category,
       status: book.status,
