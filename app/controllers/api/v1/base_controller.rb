@@ -9,7 +9,7 @@ class Api::V1::BaseController < ActionController::API
   private
 
   def authenticate_token
-    @token = Api::AccessToken.find_by digest: Digest::SHA256.hexdigest(request.headers[:AccessToken])
+    @token = Api::AccessToken.find_by digest: Digest::SHA256.hexdigest(request.headers[:AccessToken]) if request.headers[:AccessToken]
     render json: { errors: [ "Invalid AccessToken." ] } if @token.nil?
   end
 
