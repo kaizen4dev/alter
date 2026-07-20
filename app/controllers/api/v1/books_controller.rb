@@ -3,7 +3,7 @@ class Api::V1::BooksController < Api::V1::BaseController
     @books = current_user.books
     @books = @books.where category: params[:category] if params[:category]
     @books = @books.where status: params[:status] if params[:status]
-    render json: convert(@books)
+    render json: @books.map { |book| convert(book) }
   end
 
   def show
