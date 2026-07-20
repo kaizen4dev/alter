@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = current_user.books.new category: params[:category]
+    @book = current_user.books.new category: params[:category], status: params[:status]
   end
 
   def edit
@@ -19,13 +19,13 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.create book_params
-    redirect_to books_path(category: @book.category)
+    redirect_to books_path(category: @book.category, status: @book.status)
   end
 
   def update
     @book = current_user.books.find_by id: params[:id]
     @book.update book_params
-    redirect_to books_path(category: @book.category)
+    redirect_to books_path(category: @book.category, status: @book.status)
   end
 
   def destroy

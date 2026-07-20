@@ -2,7 +2,7 @@
   <div class="container p-4 my-4">
     <div class="is-flex is-justify-content-space-between">
       <%= tag.h1 @category.capitalize, class: "title is-3"%>
-      <%= link_to "Add", new_book_path(category: @category), class: "button my-auto" %>
+      <%= link_to "Add", new_book_path(category: @category, status: @status), class: "button my-auto" %>
     </div>
     <div class="tabs is-centered is-boxed">
       <ul>
