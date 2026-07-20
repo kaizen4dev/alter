@@ -62,8 +62,4 @@ class Api::V1::LinksController < Api::V1::BaseController
   def convert(link)
     { id: link.id, url: link.url, tags: link.tags.map(&:name) }
   end
-
-  def record_not_found
-    head :not_found
-  end
 end
