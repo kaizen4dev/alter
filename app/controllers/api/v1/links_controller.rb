@@ -24,9 +24,9 @@ class Api::V1::LinksController < Api::V1::BaseController
 
   def update
     @link = current_user.links.find params[:id]
-    @link.tags = append_tags!(link_params[:tags])
+    @link.url = link_params[:url] unless params[:url].blank?
 
-    if @link.update url: link_params[:url]
+    if @link.update tags: append_tags!(link_params[:tags])
       render json: convert(@link)
     else
       render json: @link.errors, status: :unprocessable_entity
@@ -42,7 +42,7 @@ class Api::V1::LinksController < Api::V1::BaseController
 
   def link_params
     p = params.permit :url, :tags
-    p[:url] = "https://" + p[:url] unless p[:url].start_with?("https://", "http://") || p[:url].blank?
+    p[:url] = "https://" + p[:url] unless p[:url].blank? || p[:url].start_with?("https://", "http://")
     p[:tags] = p[:tags].split
     p
   end
