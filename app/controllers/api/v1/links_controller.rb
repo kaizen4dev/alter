@@ -26,7 +26,7 @@ class Api::V1::LinksController < Api::V1::BaseController
     @link = current_user.links.find params[:id]
     @link.url = link_params[:url] unless params[:url].blank?
 
-    if @link.update tags: append_tags!(link_params[:tags])
+    if @link.update tags: merge_tags(link_params[:tags], @link.tags.map(&:name))
       render json: convert(@link)
     else
       render json: @link.errors, status: :unprocessable_entity
@@ -43,7 +43,7 @@ class Api::V1::LinksController < Api::V1::BaseController
   def link_params
     p = params.permit :url, :tags
     p[:url] = "https://" + p[:url] unless p[:url].blank? || p[:url].start_with?("https://", "http://")
-    p[:tags] = p[:tags].split
+    p[:tags] = ([] if p[:tags].blank?) || p[:tags].split
     p
   end
 
@@ -57,6 +57,13 @@ class Api::V1::LinksController < Api::V1::BaseController
     end
 
     link.tags
+  end
+
+  def merge_tags(old_names, new_names)
+    intersection = old_names.intersection new_names
+    merged_tags = (old_names | new_names) - intersection
+
+    append_tags!(merged_tags)
   end
 
   def convert(link)
