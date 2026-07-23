@@ -24,12 +24,12 @@
 
   <%= tag.div class: :field do %>
     <%= book.label :read_chapters, "Number of read chapters", class: :label %>
-    <%= book.number_field :read_chapters, class: :input %>
+    <%= book.number_field :read_chapters, step: :any, class: :input %>
   <% end %>
 
   <%= tag.div class: :field do %>
     <%= book.label :all_chapters, "Number of all chapters", class: :label %>
-    <%= book.number_field :all_chapters, class: :input %>
+    <%= book.number_field :all_chapters, step: :any, class: :input %>
   <% end %>
 
   <%= book.submit class: "button" %>

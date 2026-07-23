@@ -55,8 +55,8 @@ class Api::V1::BooksController < Api::V1::BaseController
       status: book.status,
       author: book.author,
       picture_url: book.picture_url,
-      all_chapters: book.all_chapters,
-      read_chapters: book.read_chapters
+      read_chapters: if book.read_chapters then sprintf("%g", book.read_chapters) else nil end,
+      all_chapters: if book.all_chapters then sprintf("%g", book.all_chapters) else nil end
     }
   end
 end
