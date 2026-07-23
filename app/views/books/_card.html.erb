@@ -9,7 +9,7 @@
       <div>
         <%= tag.h3 link_to(("N/A" if book.title.blank?) || book.title, edit_book_path(id: book.id), class:"has-text-current", data: {turbo_frame: "_top"}), class: "title is-5" %>
         <%= tag.p "Author: " + ("N/A" if book.author.blank? || book.author) %>
-        <%= tag.p "Read: " + (@read_chapters || 0) + (" out of " + @all_chapters if book.all_chapters).to_s %>
+        <%= tag.p "Read: " + (@read_chapters || "0") + (" out of " + @all_chapters if book.all_chapters).to_s %>
       </div>
 
       <ul class="is-flex is-flex-wrap-wrap">
