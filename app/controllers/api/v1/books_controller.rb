@@ -20,7 +20,7 @@ class Api::V1::BooksController < Api::V1::BaseController
       @book.save
       render json: convert(@book)
     rescue ArgumentError
-      render json: { errors: [ "Invalid category or status." ] }, status: :bad_request
+      render json: { errors: [ "Invalid category or status." ] }, status: :unprocessable_content
     end
   end
 
@@ -31,7 +31,7 @@ class Api::V1::BooksController < Api::V1::BaseController
       @book.update book_params
       render json: convert(@book)
     rescue ArgumentError
-      render json: { errors: [ "Invalid category or status." ] }, status: :bad_request
+      render json: { errors: [ "Invalid category or status." ] }, status: :unprocessable_content
     end
   end
 

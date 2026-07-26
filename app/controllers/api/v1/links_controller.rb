@@ -18,7 +18,7 @@ class Api::V1::LinksController < Api::V1::BaseController
     if @link.save
       render json: convert(@link), status: :created, location: @link
     else
-      render json: @link.errors, status: :unprocessable_entity
+      render json: @link.errors, status: :unprocessable_content
     end
   end
 
@@ -29,7 +29,7 @@ class Api::V1::LinksController < Api::V1::BaseController
     if @link.update tags: merge_tags(link_params[:tags], @link.tags.map(&:name))
       render json: convert(@link)
     else
-      render json: @link.errors, status: :unprocessable_entity
+      render json: @link.errors, status: :unprocessable_content
     end
   end
 
