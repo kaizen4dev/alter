@@ -10,7 +10,7 @@ class Api::V1::BaseController < ActionController::API
 
   def authenticate_token
     @token = Api::AccessToken.find_by digest: Digest::SHA256.hexdigest(request.headers[:AccessToken]) if request.headers[:AccessToken]
-    render json: { errors: [ "Invalid AccessToken." ] } if @token.nil?
+    render json: { errors: [ "Invalid AccessToken." ] }, status: :unauthorized if @token.nil?
   end
 
   def record_not_found
