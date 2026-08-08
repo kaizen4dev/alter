@@ -28,6 +28,6 @@ class Finance::Transfer < ApplicationRecord
   end
 
   def currency
-    sent.blank? ? destination.currency : source.currency
+    amount == sent ? source.currency : destination.currency
   end
 end
