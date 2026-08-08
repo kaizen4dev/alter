@@ -6,13 +6,16 @@
 
   <ul class="pl-4" style="list-style-type: disc;">
     <% accounts.each do |account| %>
-      <%= tag.li account.name + " – " + account.sum.to_s + " " + account.currency,
-        data: {
-          action: "click->finance#toggleSourceAccount contextmenu->finance#toggleDestinationAccount auxclick->finance#editAccount"
-        },
-        id: "account_#{account.id}",
-        class: "is-clickable is-unselectable"
-      %>
+      <div class="is-flex is-justify-content-space-between">
+        <%= tag.li account.name + " – " + account.sum.to_s + " " + account.currency,
+          data: {
+            action: "click->finance#toggleSourceAccount contextmenu->finance#toggleDestinationAccount auxclick->finance#editAccount"
+          },
+          id: "account_#{account.id}",
+          class: "is-clickable is-unselectable"
+        %>
+        <%= link_to "Edit", edit_finance_account_path(account), class: "ml-2 my-auto is-hidden-desktop" %>
+      </div>
     <% end %>
   </ul>
 </div>

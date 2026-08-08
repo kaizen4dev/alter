@@ -8,7 +8,7 @@
 %>
 
 <div class="block" data-action="auxclick->finance#editTransfer" data-finance-id-param="<%=transfer.id%>">
-  <%= tag.p title, class: "title is-6 m-0"%>
+  <%= link_to title, edit_finance_transfer_path(transfer), class: "title is-6 m-0"%>
   <%= tag.p class: "box p-2 is-flex is-align-items-center m-0 " + color do %>
     <%= tag.span transfer.amount.to_s + " " + transfer.currency, class: "p-2" %>
     <%= tag.span transfer.note, class: "box m-0 p-2 ml-4 is-flex-grow-1" %>

@@ -2,7 +2,7 @@
   <div class="container p-4 my-4" data-controller="finance" data-finance-source-account-value data-finance-destination-account-value >
     <%= tag.h1 "Accounts", class: "title is-2"%>
 
-    <div class="grid">
+    <div class="grid is-col-min-10">
       <%= render "accounts_box", accounts: @expense_accounts, group: :expense %>
       <%= render "accounts_box", accounts: @saving_accounts, group: :saving %>
       <%= render "accounts_box", accounts: @lent_accounts, group: :lent %>
