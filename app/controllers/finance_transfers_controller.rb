@@ -2,7 +2,7 @@ class FinanceTransfersController < ApplicationController
   def new
     if params[:source].blank? && params[:destination].blank?
       redirect_back fallback_location: finance_path,
-        notice: "Please select accounts with left and right mouse buttons."
+        notice: "Select accounts with left and right mouse buttons on pc, or short and long tap on mobile."
     end
 
     @transfer = current_user.finance_transfers.new(source_id: params[:source], destination_id: params[:destination])
