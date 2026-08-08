@@ -28,6 +28,8 @@ class Finance::Transfer < ApplicationRecord
   end
 
   def currency
+    return "unknown" if amount.nil?
+
     amount == sent ? source.currency : destination.currency
   end
 end
