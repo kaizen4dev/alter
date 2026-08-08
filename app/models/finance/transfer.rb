@@ -10,6 +10,10 @@ class Finance::Transfer < ApplicationRecord
   scope :incomes, -> { where(source_id: nil).where.not(destination_id: nil) }
   scope :expenses, -> { where(destination_id: nil).where.not(source_id: nil) }
 
+  def self.categories
+    [ :relocations, :incomes, :expenses ]
+  end
+
   def category
     case [ source_id.blank?, destination_id.blank? ]
     when [ false, false ] then :relocations
@@ -19,7 +23,11 @@ class Finance::Transfer < ApplicationRecord
     end
   end
 
-  def self.categories
-    [ :relocations, :incomes, :expenses ]
+  def amount
+    sent || received
+  end
+
+  def currency
+    sent.blank? ? destination.currency : source.currency
   end
 end

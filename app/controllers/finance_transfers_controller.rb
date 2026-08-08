@@ -10,12 +10,11 @@ class FinanceTransfersController < ApplicationController
 
   def create
     @transfer = current_user.finance_transfers.new transfer_params
-    @transfer.amount = amount[:sent] || amount[:received]
-    @transfer.currency = if @transfer.source then @transfer.source.currency else @transfer.destination.currency end
+    amount = @transfer.slice :sent, :received
 
     if @transfer.save
-      @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.source.blank?
-      @transfer.destination.update sum: @transfer.destination.sum + amount[:received] unless @transfer.destination.blank?
+      @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.sent.blank?
+      @transfer.destination.update sum: @transfer.destination.sum + amount[:received] unless @transfer.received.blank?
       redirect_to finance_path
     else
       render :new, status: :unprocessable_content
@@ -28,11 +27,12 @@ class FinanceTransfersController < ApplicationController
 
   def update
     @transfer = current_user.finance_transfers.find params[:id]
-    @transfer.amount = amount[:sent] || amount[:received]
+    old = @transfer.slice :sent, :received
 
     if @transfer.update transfer_params
-      # @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.source.blank?
-      # @transfer.destination.update sum: @transfer.destination.sum + amount[:received] unless @transfer.destination.blank?
+      new = @transfer.slice :sent, :received
+      @transfer.source.update sum: @transfer.source.sum + old[:sent] - new[:sent] unless @transfer.source.blank?
+      @transfer.destination.update sum: @transfer.destination.sum - old[:received] + new[:received] unless @transfer.destination.blank?
       redirect_to finance_path
     else
       render :edit, status: :unprocessable_content
@@ -47,11 +47,6 @@ class FinanceTransfersController < ApplicationController
   private
 
   def transfer_params
-    params.expect finance_transfer: [ :note, :source_id, :destination_id ]
-  end
-
-  def amount
-    p = params.expect finance_transfer: [ :sent, :received ]
-    p.transform_values { |v| if v.blank? then 0 else v.to_i end }
+    params.expect finance_transfer: [ :note, :source_id, :destination_id, :sent, :received ]
   end
 end
