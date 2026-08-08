@@ -11,7 +11,6 @@ class FinanceTransfersController < ApplicationController
   def create
     @transfer = current_user.finance_transfers.new transfer_params
     @transfer.amount = amount[:sent] || amount[:received]
-    @transfer.fee = amount[:sent] - amount[:received] unless @transfer.source.blank? || @transfer.destination.blank? or @transfer.source.currency != @transfer.destination.currency
     @transfer.currency = if @transfer.source then @transfer.source.currency else @transfer.destination.currency end
 
     if @transfer.save
@@ -30,7 +29,6 @@ class FinanceTransfersController < ApplicationController
   def update
     @transfer = current_user.finance_transfers.find params[:id]
     @transfer.amount = amount[:sent] || amount[:received]
-    @transfer.fee = amount[:sent] - amount[:received] unless @transfer.source.blank? || @transfer.destination.blank? or @transfer.source.currency != @transfer.destination.currency
 
     if @transfer.update transfer_params
       # @transfer.source.update sum: @transfer.source.sum - amount[:sent] unless @transfer.source.blank?
