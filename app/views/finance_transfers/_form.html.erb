@@ -28,7 +28,7 @@
       <div class="field is-flex-grow-1 mx-1">
         <%= f.label :sent, class: "label" %>
         <div class="is-flex">
-          <%= f.text_field :sent, class: "input is-radiusless is-flex-grow-1" %>
+          <%= f.text_field :sent, step: :any, class: "input is-radiusless is-flex-grow-1" %>
           <%= tag.p @transfer.source.currency, class: "input is-radiusless is-flex-shrink-5", disabled: "" %>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="field is-flex-grow-1 mx-1">
         <%= f.label :received, class: "label" %>
         <div class="is-flex">
-          <%= f.text_field :received, class: "input is-radiusless is-flex-grow-1" %>
+          <%= f.text_field :received, step: :any, class: "input is-radiusless is-flex-grow-1" %>
           <%= tag.p @transfer.destination.currency, class: "input is-radiusless is-flex-shrink-5", disabled: "" %>
         </div>
       </div>
