@@ -1,4 +1,4 @@
-<nav class="navbar has-shadow" data-controller="navbar">
+<nav class="navbar has-shadow is-hidden-mobile" data-controller="navbar">
   <div class="navbar-brand">
     <%= link_to "AlterTrack", root_path, class: "navbar-item is-size-4" %>
 
@@ -40,3 +40,32 @@
     </div>
   </div>
 </nav>
+
+<% if signed_in? %>
+  <nav class="navbar is-hidden-tablet is-fixed-bottom has-shadow">
+    <div class="navbar-brand is-flex is-justify-content-space-around">
+      <%= link_to "Links", links_path, class: "navbar-item #{"has-text-primary" if request.path == links_path || request.path == root_path}" %>
+
+      <div class="navbar-item dropdown is-up <%= 'has-text-primary' if request.path == books_path %>" data-controller="dropdown">
+        <%= tag.button "Books", class: "dropdown-trigger", data: {action: "dropdown#toggle"}%>
+        <div class="dropdown-menu dropdown-content">
+          <% Book.categories.each_key do |category| %>
+            <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"has-text-primary" if @category == category}" %>
+          <% end %>
+        </div>
+      </div>
+
+      <%= link_to "Finance", finance_path, class: "navbar-item #{"has-text-primary" if request.path == finance_path}" %>
+
+      <div class="navbar-item dropdown is-right is-up" data-controller="dropdown">
+        <%= tag.button "Settings", class: "dropdown-trigger", data: {action: "dropdown#toggle"}%>
+        <div class="dropdown-menu dropdown-content">
+          <%= link_to "API", api_access_tokens_path, class: "navbar-item" %>
+          <%= link_to "Account", edit_user_registration_path, class: "navbar-item" %>
+          <hr class="dropdown-divider">
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "navbar-item" %> 
+        </div>
+      </div>
+    </div>
+  </nav>
+<% end %>
