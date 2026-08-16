@@ -25,20 +25,16 @@
 
   <body class="has-navbar-fixed-bottom">
     <%= render "layouts/navbar" %>
+
+    <% if notice || alert %>
       <section id="notifications" class="container is-max-tablet p-4 ml-6" data-controller="notifications">
-        <% if notice %>
-          <%= tag.p class: "notification is-info" do %>
-            <%= tag.button "", class: "delete", data: {action: "notifications#delete" } %>
-            <%= notice %>
-          <% end %>
-        <% end %>
-        <% if alert %>
-          <%= tag.p class: "notification is-warning" do %>
-            <%= tag.button "", class: "delete", data: {action: "notifications#delete"} %>
-            <%= alert %>
-          <% end %>
+        <% color = if notice then "is-info" else "is-warning" end %>
+        <%= tag.p class: "notification #{color}" do %>
+          <%= tag.button "", class: "delete", data: {action: "notifications#delete" } %>
+          <%= notice || alert %>
         <% end %>
       </section>
+    <% end %>
 
     <%= yield %>
   </body>
