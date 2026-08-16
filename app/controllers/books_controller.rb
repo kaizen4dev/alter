@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   def index
     @category = params[:category] || Book.categories.keys.first
     @status = params[:status] || Book.statuses.keys.first
+    @counts = current_user.books.where(category: @category).group(:status).count
     @books = current_user.books.where category: @category, status: @status
   end
 
