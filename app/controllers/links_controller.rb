@@ -3,10 +3,10 @@ class LinksController < ApplicationController
     @links = current_user.links.includes(:tags)
 
     unless params[:tags].nil?
-      requiredTags = params[:tags].split
+      requiredTags = params[:tags].split.map(&:downcase)
 
       @links = @links.select do |link|
-        presentTags = link.tags.pluck(:name)
+        presentTags = link.tags.pluck(:name).map(&:downcase)
         requiredTags.all? { |t| presentTags.include?(t) }
       end
     end
