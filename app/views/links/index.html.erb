@@ -25,9 +25,9 @@
             <div class="card-header">
               <%= link_to link.url, link.url, class: "card-header-title box" %>
             </div>
-            <div class="card-content has-text-medium is-size-5 is-info p-3">
+            <div class="card-content has-text-medium is-size-5 p-3">
               <% link.tags.each do |t|%>
-                <%= tag.span "#" + t.name, class: "tag is-medium m-1" %>
+                <%= tag.span t.name, class: "tag is-medium m-1" %>
               <% end %>
             </div>
 
