@@ -23,7 +23,7 @@
         <%= turbo_frame_tag "link-#{link.id}", class: "is-block mb-5" do %>
           <div class="card" data-controller="link" data-link-url-value="<%= link.url %>">
             <div class="card-header">
-              <%= link_to link.url, link.url, class: "card-header-title box" %>
+              <%= link_to link.url, link.url, class: "card-header-title box", style: "overflow: auto;" %>
             </div>
             <div class="card-content has-text-medium is-size-5 p-3">
               <% link.tags.each do |t|%>
