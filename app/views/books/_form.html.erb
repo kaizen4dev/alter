@@ -32,6 +32,6 @@
     <%= book.number_field :all_chapters, step: :any, class: :input %>
   <% end %>
 
-  <%= book.submit class: "button" %>
-  <%= link_to "Cancel", books_path(category: @book.category), class: "button" %>
+  <%= book.submit class: "button", data: {turbo_action: :replace} %>
+  <%= link_to "Cancel", books_path(category: @book.category), class: "button", data: {turbo_action: :replace} %>
 <% end %>
