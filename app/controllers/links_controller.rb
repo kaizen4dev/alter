@@ -3,11 +3,14 @@ class LinksController < ApplicationController
     @links = current_user.links.includes(:tags)
 
     unless params[:tags].nil?
-      requiredTags = params[:tags].split.map(&:downcase)
+      param_tags = params[:tags].split.map(&:downcase)
+
+      # split tags into excluded and required based on "!" and then remove it from excluded tags
+      excluded_tags, required_tags = param_tags.partition { |t| t.include?("!") }.tap { |a| a[0].map! { |t| t[1..] } }
 
       @links = @links.select do |link|
-        presentTags = link.tags.pluck(:name).map(&:downcase)
-        requiredTags.all? { |t| presentTags.include?(t) }
+        present_tags = link.tags.pluck(:name).map(&:downcase)
+        required_tags.all? { |t| present_tags.include?(t) } && !excluded_tags.any? { |t| present_tags.include?(t) }
       end
     end
   end
