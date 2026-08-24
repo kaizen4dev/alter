@@ -43,8 +43,7 @@ class Api::V1::BooksController < Api::V1::BaseController
   private
 
   def book_params
-    render json: { errors: [ "Setting a picture with url isn't implemented yet." ] } unless params[:picture_url].blank?
-    params.permit :status, :picture_url, :title, :all_chapters, :read_chapters, :category, :author
+    params.permit :status, :title, :all_chapters, :read_chapters, :category, :author
   end
 
   def convert(book)
@@ -54,7 +53,6 @@ class Api::V1::BooksController < Api::V1::BaseController
       category: book.category,
       status: book.status,
       author: book.author,
-      picture_url: book.picture_url,
       read_chapters: if book.read_chapters then sprintf("%g", book.read_chapters) else nil end,
       all_chapters: if book.all_chapters then sprintf("%g", book.all_chapters) else nil end
     }
