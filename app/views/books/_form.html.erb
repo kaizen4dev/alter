@@ -12,14 +12,16 @@
     <%= book.select :status, Book.statuses.keys %>
   <% end %>
 
-  <%= tag.div class: :field do %>
-    <%= book.label :author, class: :label %>
-    <%= book.text_field :author, class: :input %>
+  <%= tag.div class: "file field" do %>
+    <%= book.label :picture, class: "file-label" do %>
+      <%= book.file_field :picture, class: "file-input" %>
+      <%= tag.span "Select an image", class: "file-cta file-label" %>
+    <% end %>
   <% end %>
 
   <%= tag.div class: :field do %>
-    <%= book.label :picture_url, class: :label %>
-    <%= book.text_field :picture_url, class: :input %>
+    <%= book.label :author, class: :label %>
+    <%= book.text_field :author, class: :input %>
   <% end %>
 
   <%= tag.div class: :field do %>

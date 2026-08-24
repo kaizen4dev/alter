@@ -4,8 +4,12 @@
   # https://devenv.sh/basics/
   env.GREET = "devenv";
 
+  env.LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+    pkgs.vips
+  ];
+
   # https://devenv.sh/packages/
-  packages = [ pkgs.git pkgs.libyaml ];
+  packages = with pkgs; [ git libyaml vips];
 
   # https://devenv.sh/languages/
   languages.ruby = {

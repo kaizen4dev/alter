@@ -43,7 +43,7 @@ class Api::V1::BooksController < Api::V1::BaseController
   private
 
   def book_params
-    # render json: { errors: [ "Status and category must not be nil." ] } if params[:status].blank? || params[:category].blank?
+    render json: { errors: [ "Setting a picture with url isn't implemented yet." ] } unless params[:picture_url].blank?
     params.permit :status, :picture_url, :title, :all_chapters, :read_chapters, :category, :author
   end
 

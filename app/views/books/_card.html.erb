@@ -3,7 +3,10 @@
 
 <%= turbo_frame_tag "book-#{book.id}" do %>
   <div class="card cell p-4 is-flex">
-    <%= image_tag book.picture_url, class: "card-image image", style: "height: 200px !important;" unless book.picture_url.blank? %>
+    <% if book.picture.attached? %>
+      <%= image_tag book.picture.variant(resize_to_fill: [150, 200]), class: "card-image image mb-auto max is-hidden-mobile" %>
+      <%= image_tag book.picture.variant(resize_to_fill: [110, 150]), class: "card-image image mb-auto is-hidden-tablet" %>
+    <% end %>
 
     <div class="card-content p-0 ml-4 is-flex is-flex-direction-column is-justify-content-space-between">
       <div>
