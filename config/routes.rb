@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :links, except: [ :show ]
+  resources :films
   resources :books
   patch :change_book_chapters, to: "books#change_chapters"
 
