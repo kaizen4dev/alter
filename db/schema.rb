@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_24_050647) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_224745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -63,6 +63,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_050647) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "films", force: :cascade do |t|
+    t.integer "all_episodes"
+    t.integer "category", default: 0
+    t.datetime "created_at", null: false
+    t.integer "seen_episodes", default: 0
+    t.integer "status", default: 0
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_films_on_user_id"
   end
 
   create_table "finance_accounts", force: :cascade do |t|
@@ -136,6 +148,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_24_050647) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "users"
+  add_foreign_key "films", "users"
   add_foreign_key "finance_accounts", "users"
   add_foreign_key "finance_transfers", "finance_accounts", column: "destination_id"
   add_foreign_key "finance_transfers", "finance_accounts", column: "source_id"
