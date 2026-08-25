@@ -1,4 +1,4 @@
-<%= tag.div class: "container p-4 my-4 is-max-tablet" do %>
+<%= tag.div class: "container p-4 my-4 is-max-tablet", data: {turbo: false} do %>
   <%= tag.h1 "Edit Link", class: "title" %>
   <%= turbo_frame_tag "link-#{@link.id}" do %>
     <%= render "form" %>

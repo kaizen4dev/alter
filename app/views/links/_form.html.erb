@@ -14,5 +14,6 @@
     <%= f.text_field "tags", value: @link.tags.pluck(:name).join(" "), placeholder: "example interesting", class: "input is-medium" %>
   <% end %>
 
-  <%= f.submit class: "button"%>
+  <%= f.submit class: "button" %>
+  <%= link_to "Cancel", :links, class: "button" %>
 <% end %>
