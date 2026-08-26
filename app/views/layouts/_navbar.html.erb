@@ -21,6 +21,14 @@
           <% end %>
         </div>
       </div>
+      <div class="navbar-item has-dropdown is-hoverable is-boxed">
+        <%= tag.a "Films", class: "navbar-link is-arrowless is-boxed #{"is-selected has-text-white" if request.path == films_path}" %>
+        <div class="navbar-dropdown">
+          <% Film.categories.each_key do |category| %>
+            <%= link_to category.capitalize, films_path(category: category), class: "navbar-item #{"is-selected has-text-white" if @category == category}" %>
+          <% end %>
+        </div>
+      </div>
       <%= link_to "Finance", finance_path, class: "navbar-item is-normal #{"is-selected has-text-white" if request.path == finance_path}" %>
     </div>
 
@@ -51,6 +59,15 @@
         <div class="dropdown-menu dropdown-content">
           <% Book.categories.each_key do |category| %>
             <%= link_to category.capitalize, books_path(category: category), class: "navbar-item #{"has-text-primary" if @category == category}" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="navbar-item dropdown is-up <%= 'has-text-primary' if request.path == films_path %>" data-controller="dropdown">
+        <%= tag.button "Films", class: "dropdown-trigger", data: {action: "dropdown#toggle"}%>
+        <div class="dropdown-menu dropdown-content">
+          <% Film.categories.each_key do |category| %>
+            <%= link_to category.capitalize, films_path(category: category), class: "navbar-item #{"has-text-primary" if @category == category}" %>
           <% end %>
         </div>
       </div>
