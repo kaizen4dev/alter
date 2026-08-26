@@ -1,0 +1,34 @@
+<%= form_with model: @film do |film| %>
+  <%= tag.div class: :field do %>
+    <%= film.label :title, class: :label %>
+    <%= film.text_field :title, class: :input %>
+  <% end %>
+
+  <%= tag.div class: "select field" do %>
+    <%= film.select :category, Film.categories.keys %>
+  <% end %>
+
+  <%= tag.div class: "select field" do %>
+    <%= film.select :status, Film.statuses.keys %>
+  <% end %>
+
+  <%= tag.div class: "file field" do %>
+    <%= film.label :picture, class: "file-label" do %>
+      <%= film.file_field :picture, class: "file-input" %>
+      <%= tag.span "Select an image", class: "file-cta file-label" %>
+    <% end %>
+  <% end %>
+
+  <%= tag.div class: :field do %>
+    <%= film.label :seen_episodes, "Number of seen episodes", class: :label %>
+    <%= film.number_field :seen_episodes, step: :any, class: :input %>
+  <% end %>
+
+  <%= tag.div class: :field do %>
+    <%= film.label :all_episodes, "Number of all episodes", class: :label %>
+    <%= film.number_field :all_episodes, step: :any, class: :input %>
+  <% end %>
+
+  <%= film.submit class: "button", data: {turbo_action: :replace} %>
+  <%= link_to "Cancel", films_path(category: @film.category), class: "button", data: {turbo_action: :replace} %>
+<% end %>

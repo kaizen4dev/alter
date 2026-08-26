@@ -1,0 +1,25 @@
+<% seen_episodes = film.seen_episodes.to_s %>
+<% all_episodes = film.all_episodes.to_s unless film.all_episodes.blank? %>
+
+<%= turbo_frame_tag "film-#{film.id}" do %>
+  <div class="card cell p-4 is-flex">
+    <% if film.picture.attached? %>
+      <%= image_tag film.picture.variant(resize_to_fill: [150, 200]), class: "card-image image mb-auto max is-hidden-mobile" %>
+      <%= image_tag film.picture.variant(resize_to_fill: [110, 150]), class: "card-image image mb-auto is-hidden-tablet" %>
+    <% end %>
+
+    <div class="card-content p-0 ml-4 is-flex is-flex-direction-column is-justify-content-space-between">
+      <div>
+        <%= tag.h3 link_to(("N/A" if film.title.blank?) || film.title, edit_film_path(id: film.id), class:"has-text-current", data: {turbo_frame: "_top"}), class: "title is-5" %>
+        <%= tag.p "Seen: " + seen_episodes + (" out of " + all_episodes if film.all_episodes).to_s %>
+      </div>
+
+      <ul class="is-flex is-flex-wrap-wrap-reverse">
+        <% [-10, -5, -1, 1, 5, 10].each do |number| %>
+          <% button_name = if number.negative? then number else "+" + number.to_s end %>
+          <%= button_to button_name, film_path(id: film.id, film: {seen_episodes: film.seen_episodes + number}), method: :patch, class: "button is-small m-1" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
