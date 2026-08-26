@@ -13,10 +13,12 @@
         <% end %>
       </ul>
     </div>
-    <div class="grid is-col-min-12">
-      <% @books.each do |book| %>
-        <%= render "card", book: book %>
-      <% end %>
+    <div class="fixed-grid has-1-cols-mobile has-2-cols-tablet has-3-cols-desktop">
+      <div class="grid">
+        <% @books.each do |book| %>
+          <%= render "card", book: book %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

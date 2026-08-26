@@ -15,7 +15,7 @@
         <%= tag.p "Read: " + (read_chapters || "0") + (" out of " + all_chapters if book.all_chapters).to_s %>
       </div>
 
-      <ul class="is-flex is-flex-wrap-wrap">
+      <ul class="is-flex is-flex-wrap-wrap-reverse">
         <% ["-10", "-5", "-1", "+1", "+5", "+10"].each do |number| %>
           <%= button_to number, change_book_chapters_path(id: book.id, number: number), method: :patch, class: "button is-small m-1"%>
         <% end %>
